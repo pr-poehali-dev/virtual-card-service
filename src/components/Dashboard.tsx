@@ -27,7 +27,12 @@ const Dashboard = ({ onBack }: { onBack: () => void }) => {
         <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
           <button onClick={onBack} className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition-colors">
             <Icon name="ArrowLeft" size={18} />
-            <span className="gradient-text font-bold text-xl">CardFlow</span>
+            <div className="flex items-center gap-2">
+              <div className="w-7 h-7 rounded-lg gradient-mint-violet flex items-center justify-center">
+                <span className="text-background font-display font-black text-base">N</span>
+              </div>
+              <span className="font-display font-extrabold text-lg text-foreground">NexCard</span>
+            </div>
           </button>
           <div className="flex items-center gap-3">
             <button className="flex items-center gap-2 bg-secondary hover:bg-secondary/80 text-foreground px-4 py-2 rounded-xl transition-colors text-sm">

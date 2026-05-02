@@ -24,127 +24,176 @@ const Landing = ({ onAuth }: { onAuth: (mode: "login" | "register") => void }) =
   ];
 
   return (
-    <div className="min-h-screen bg-background font-['Golos_Text']">
+    <div className="min-h-screen bg-background overflow-x-hidden">
       {/* NAV */}
-      <nav className="fixed top-0 left-0 right-0 z-50 border-b border-border/30 bg-background/80 backdrop-blur-xl">
-        <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-          <span className="gradient-text font-bold text-2xl tracking-tight">NexCard</span>
-          <div className="hidden md:flex items-center gap-8 text-sm text-muted-foreground">
+      <nav className="fixed top-0 left-0 right-0 z-50 px-4 pt-4">
+        <div className="max-w-6xl mx-auto card-glass rounded-full px-6 py-3 flex justify-between items-center">
+          <div className="flex items-center gap-2">
+            <div className="w-8 h-8 rounded-xl gradient-mint-violet flex items-center justify-center">
+              <span className="text-background font-display font-black text-lg">N</span>
+            </div>
+            <span className="font-display font-extrabold text-xl tracking-tight text-foreground">NexCard</span>
+          </div>
+          <div className="hidden md:flex items-center gap-7 text-sm text-muted-foreground">
             <a href="#features" className="hover:text-foreground transition-colors">Преимущества</a>
             <a href="#how" className="hover:text-foreground transition-colors">Как работает</a>
             <a href="#pricing" className="hover:text-foreground transition-colors">Тарифы</a>
             <a href="#faq" className="hover:text-foreground transition-colors">FAQ</a>
           </div>
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-2">
             <button onClick={() => onAuth("login")} className="text-sm text-muted-foreground hover:text-foreground transition-colors px-3 py-2">
               Войти
             </button>
             <button
               onClick={() => onAuth("register")}
-              className="bg-emerald-500 hover:bg-emerald-400 text-black font-bold text-sm px-5 py-2.5 rounded-xl transition-all neon-glow"
+              className="gradient-mint-violet text-background font-bold text-sm px-5 py-2.5 rounded-full transition-all hover:scale-105 mint-glow"
             >
-              Начать
+              Открыть карту
             </button>
           </div>
         </div>
       </nav>
 
       {/* HERO */}
-      <section className="relative pt-32 pb-24 px-4 hero-glow dot-grid overflow-hidden">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[600px] rounded-full bg-emerald-500/5 blur-3xl pointer-events-none" />
-        <div className="max-w-6xl mx-auto">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div className="animate-fade-in">
-              <div className="inline-flex items-center gap-2 bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-sm font-medium px-4 py-2 rounded-full mb-6">
-                <div className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
-                Мгновенный выпуск карт
+      <section className="relative pt-36 pb-24 px-4 hero-glow grid-pattern overflow-hidden">
+        <div className="blob bg-[hsl(var(--mint))] w-[400px] h-[400px] opacity-30 top-20 -left-20 animate-blob" />
+        <div className="blob bg-[hsl(var(--violet))] w-[500px] h-[500px] opacity-25 top-40 -right-32 animate-blob" style={{ animationDelay: "3s" }} />
+
+        <div className="max-w-6xl mx-auto relative z-10">
+          <div className="grid lg:grid-cols-12 gap-12 items-center">
+            <div className="lg:col-span-7 animate-fade-in">
+              <div className="inline-flex items-center gap-2 card-glass text-xs font-semibold px-3 py-1.5 rounded-full mb-6 uppercase tracking-widest">
+                <div className="w-1.5 h-1.5 rounded-full bg-[hsl(var(--mint))] animate-pulse" />
+                <span className="text-[hsl(var(--mint))]">Live</span>
+                <span className="text-muted-foreground">Карты выпускаются прямо сейчас</span>
               </div>
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-black leading-tight mb-6 text-foreground">
-                Оплачивай любые<br />
-                <span className="gradient-text">зарубежные сервисы</span><br />
-                без ограничений
+              <h1 className="font-display font-black leading-[0.95] mb-6 text-foreground" style={{ fontSize: "clamp(2.5rem, 6vw, 5rem)" }}>
+                Платежи<br />
+                <span className="gradient-text italic">без границ.</span><br />
+                Карты <span className="relative inline-block">
+                  <span className="relative z-10">за 2 мин</span>
+                  <svg className="absolute -bottom-2 left-0 w-full" height="14" viewBox="0 0 200 14" fill="none">
+                    <path d="M2 11C50 4 100 4 198 8" stroke="url(#g1)" strokeWidth="4" strokeLinecap="round"/>
+                    <defs><linearGradient id="g1" x1="0" y1="0" x2="200" y2="0"><stop stopColor="#40e0b2"/><stop offset="1" stopColor="#a86ef0"/></linearGradient></defs>
+                  </svg>
+                </span>
               </h1>
-              <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
-                Виртуальные Visa и Mastercard карты за 2 минуты.<br />
-                ChatGPT, Netflix, Steam — любые платежи без блокировок.
+              <p className="text-muted-foreground text-lg mb-8 leading-relaxed max-w-xl">
+                Виртуальные Visa и Mastercard для оплаты ChatGPT, Netflix, Steam и тысяч других сервисов. Без VPN, без блокировок, без танцев с бубном.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div className="flex flex-col sm:flex-row gap-3">
                 <button
                   onClick={() => onAuth("register")}
-                  className="bg-emerald-500 hover:bg-emerald-400 text-black font-bold text-lg px-8 py-4 rounded-2xl transition-all neon-glow flex items-center gap-2 justify-center"
+                  className="gradient-mint-violet text-background font-bold text-base px-7 py-4 rounded-full transition-all hover:scale-105 mint-glow flex items-center gap-2 justify-center"
                 >
-                  <Icon name="CreditCard" size={20} />
                   Получить карту
+                  <Icon name="ArrowRight" size={18} />
                 </button>
-                <button className="border border-border hover:border-emerald-500/40 text-foreground font-medium text-lg px-8 py-4 rounded-2xl transition-all flex items-center gap-2 justify-center">
-                  <Icon name="Play" size={18} />
+                <button className="card-glass hover:bg-white/5 text-foreground font-medium text-base px-7 py-4 rounded-full transition-all flex items-center gap-2 justify-center">
+                  <Icon name="Play" size={16} />
                   Как это работает
                 </button>
               </div>
-              <div className="flex items-center gap-6 mt-8 text-sm text-muted-foreground">
+              <div className="flex flex-wrap items-center gap-x-6 gap-y-2 mt-8 text-sm text-muted-foreground">
                 <div className="flex items-center gap-2">
-                  <Icon name="CheckCircle" size={16} className="text-emerald-400" />
+                  <Icon name="Check" size={14} className="text-[hsl(var(--mint))]" />
                   Без комиссии за открытие
                 </div>
                 <div className="flex items-center gap-2">
-                  <Icon name="CheckCircle" size={16} className="text-emerald-400" />
+                  <Icon name="Check" size={14} className="text-[hsl(var(--mint))]" />
                   3D Secure
                 </div>
                 <div className="flex items-center gap-2">
-                  <Icon name="CheckCircle" size={16} className="text-emerald-400" />
+                  <Icon name="Check" size={14} className="text-[hsl(var(--mint))]" />
                   150+ стран
                 </div>
               </div>
             </div>
 
             {/* Hero Cards Visual */}
-            <div className="relative flex justify-center items-center animate-float">
+            <div className="lg:col-span-5 relative flex justify-center items-center min-h-[400px]">
               <div className="relative w-full max-w-sm">
-                <div className="absolute -top-4 -right-4 w-72 h-44 rounded-2xl bg-gradient-to-br from-blue-600 to-purple-800 opacity-60 rotate-6 shadow-2xl" />
-                <div className="absolute -top-2 -right-2 w-72 h-44 rounded-2xl bg-gradient-to-br from-slate-600 to-slate-800 opacity-80 rotate-3 shadow-2xl" />
-                <div className="relative z-10 w-72 h-44 rounded-2xl bg-gradient-to-br from-emerald-600 to-teal-800 p-5 shadow-2xl neon-glow">
-                  <div className="flex justify-between items-start">
+                {/* фоновая карта 1 */}
+                <div className="absolute top-12 -right-6 w-72 h-44 rounded-3xl bg-gradient-to-br from-[hsl(var(--violet))] to-purple-800 opacity-70 rotate-12 shadow-2xl violet-glow" />
+                {/* фоновая карта 2 */}
+                <div className="absolute -top-4 -left-6 w-72 h-44 rounded-3xl bg-gradient-to-br from-slate-700 to-slate-900 opacity-80 -rotate-6 shadow-2xl" />
+                {/* основная карта */}
+                <div className="relative z-10 w-72 h-44 rounded-3xl p-5 shadow-2xl mint-glow animate-float overflow-hidden"
+                  style={{ background: "linear-gradient(135deg, hsl(var(--mint)) 0%, hsl(var(--violet)) 100%)" }}>
+                  <div className="absolute -top-10 -right-10 w-40 h-40 rounded-full bg-white/15 blur-2xl" />
+                  <div className="flex justify-between items-start relative">
                     <div>
-                      <div className="text-emerald-200/60 text-xs uppercase tracking-wider">Баланс</div>
-                      <div className="text-white text-2xl font-bold mt-1">$247.50</div>
+                      <div className="text-white/70 text-[10px] uppercase tracking-[0.2em] font-semibold">NexCard Premium</div>
+                      <div className="text-white text-2xl font-display font-black mt-1">$247.50</div>
                     </div>
-                    <span className="text-white/80 italic font-black text-xl">VISA</span>
+                    <span className="text-white font-display italic font-black text-xl">VISA</span>
                   </div>
-                  <div className="mt-4">
-                    <div className="text-white/60 text-xs font-mono tracking-widest">4532 •••• •••• 7741</div>
+                  <div className="mt-5 relative">
+                    <div className="text-white/80 text-sm font-mono tracking-[0.25em]">4532 •••• •••• 7741</div>
                   </div>
-                  <div className="flex justify-between items-end mt-3">
+                  <div className="flex justify-between items-end mt-3 relative">
                     <div>
-                      <div className="text-white/40 text-xs uppercase tracking-wider">Держатель</div>
-                      <div className="text-white text-sm font-semibold">ALEX IVANOV</div>
+                      <div className="text-white/50 text-[9px] uppercase tracking-wider">Держатель</div>
+                      <div className="text-white text-xs font-semibold">ALEX IVANOV</div>
                     </div>
                     <div className="text-right">
-                      <div className="text-white/40 text-xs uppercase tracking-wider">До</div>
-                      <div className="text-white text-sm font-semibold">08/28</div>
+                      <div className="text-white/50 text-[9px] uppercase tracking-wider">До</div>
+                      <div className="text-white text-xs font-semibold">08/28</div>
                     </div>
                   </div>
                 </div>
-                <div className="absolute -bottom-6 left-0 right-0 flex justify-center gap-2">
-                  {["🤖", "🎬", "🎵", "🎮"].map((emoji, i) => (
-                    <div key={i} className="w-10 h-10 bg-card border border-border rounded-xl flex items-center justify-center text-lg shadow-lg">
-                      {emoji}
-                    </div>
-                  ))}
+
+                {/* плавающий бейдж — оплата */}
+                <div className="absolute -top-6 -left-10 card-glass rounded-2xl px-3 py-2 flex items-center gap-2 shadow-xl animate-float" style={{ animationDelay: "1s" }}>
+                  <div className="w-8 h-8 rounded-xl bg-[hsl(var(--mint))]/20 flex items-center justify-center">
+                    <span className="text-base">🤖</span>
+                  </div>
+                  <div>
+                    <div className="text-[10px] text-muted-foreground">Оплачено</div>
+                    <div className="text-xs font-bold text-foreground">ChatGPT $20</div>
+                  </div>
+                  <Icon name="Check" size={14} className="text-[hsl(var(--mint))]" />
+                </div>
+
+                {/* плавающий бейдж — успешно */}
+                <div className="absolute -bottom-6 -right-4 card-glass rounded-2xl px-3 py-2 flex items-center gap-2 shadow-xl animate-float" style={{ animationDelay: "2s" }}>
+                  <div className="w-8 h-8 rounded-xl bg-[hsl(var(--violet))]/20 flex items-center justify-center">
+                    <span className="text-base">🎬</span>
+                  </div>
+                  <div>
+                    <div className="text-[10px] text-muted-foreground">Подписка</div>
+                    <div className="text-xs font-bold text-foreground">Netflix активна</div>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
 
+          {/* Ticker */}
+          <div className="mt-20 relative card-glass rounded-2xl overflow-hidden py-4">
+            <div className="flex ticker whitespace-nowrap">
+              {[...Array(2)].map((_, i) => (
+                <div key={i} className="flex items-center gap-12 pr-12">
+                  {["ChatGPT", "Netflix", "Spotify", "Steam", "Adobe", "Google Ads", "Facebook Ads", "Amazon", "OpenAI", "Disney+"].map((s) => (
+                    <span key={s} className="font-display font-bold text-2xl text-muted-foreground/60">
+                      {s} <span className="text-[hsl(var(--mint))]">✦</span>
+                    </span>
+                  ))}
+                </div>
+              ))}
+            </div>
+          </div>
+
           {/* Stats */}
-          <div className="grid grid-cols-3 gap-6 mt-20">
+          <div className="grid grid-cols-3 gap-6 mt-12">
             {[
-              { value: "50 000+", label: "Активных карт" },
+              { value: "50K+", label: "Активных карт" },
               { value: "99.2%", label: "Успешных платежей" },
               { value: "2 мин", label: "Время выпуска" },
             ].map((stat) => (
-              <div key={stat.label} className="text-center">
-                <div className="text-3xl font-black gradient-text">{stat.value}</div>
-                <div className="text-muted-foreground text-sm mt-1">{stat.label}</div>
+              <div key={stat.label} className="text-center card-glass rounded-2xl p-5">
+                <div className="text-3xl md:text-4xl font-display font-black gradient-text">{stat.value}</div>
+                <div className="text-muted-foreground text-xs md:text-sm mt-1">{stat.label}</div>
               </div>
             ))}
           </div>
@@ -156,7 +205,7 @@ const Landing = ({ onAuth }: { onAuth: (mode: "login" | "register") => void }) =
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-16">
             <div className="text-emerald-400 font-semibold text-sm uppercase tracking-widest mb-3">Преимущества</div>
-            <h2 className="text-4xl font-black text-foreground">Почему выбирают CardFlow</h2>
+            <h2 className="text-4xl font-display font-black text-foreground">Почему выбирают NexCard</h2>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {[
@@ -405,16 +454,21 @@ const Landing = ({ onAuth }: { onAuth: (mode: "login" | "register") => void }) =
       <footer className="border-t border-border/30 py-12 px-4">
         <div className="max-w-6xl mx-auto">
           <div className="flex flex-col md:flex-row justify-between items-center gap-6">
-            <div>
-              <span className="gradient-text font-bold text-2xl">CardFlow</span>
-              <p className="text-muted-foreground text-sm mt-1">Виртуальные карты без ограничений</p>
+            <div className="flex items-center gap-2">
+              <div className="w-8 h-8 rounded-xl gradient-mint-violet flex items-center justify-center">
+                <span className="text-background font-display font-black text-lg">N</span>
+              </div>
+              <div>
+                <span className="font-display font-extrabold text-xl text-foreground">NexCard</span>
+                <p className="text-muted-foreground text-xs">Виртуальные карты без границ</p>
+              </div>
             </div>
             <div className="flex gap-6 text-sm text-muted-foreground">
-              <a href="#" className="hover:text-foreground transition-colors">Политика конфиденциальности</a>
-              <a href="#" className="hover:text-foreground transition-colors">Условия использования</a>
+              <a href="#" className="hover:text-foreground transition-colors">Конфиденциальность</a>
+              <a href="#" className="hover:text-foreground transition-colors">Условия</a>
               <a href="#" className="hover:text-foreground transition-colors">Поддержка</a>
             </div>
-            <p className="text-muted-foreground text-sm">© 2026 CardFlow. Все права защищены.</p>
+            <p className="text-muted-foreground text-sm">© 2026 NexCard</p>
           </div>
         </div>
       </footer>
