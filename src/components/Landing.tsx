@@ -28,7 +28,7 @@ const Landing = ({ onDashboard }: { onDashboard: () => void }) => {
       {/* NAV */}
       <nav className="fixed top-0 left-0 right-0 z-50 border-b border-border/30 bg-background/80 backdrop-blur-xl">
         <div className="max-w-6xl mx-auto px-4 py-4 flex justify-between items-center">
-          <span className="gradient-text font-bold text-2xl tracking-tight">CardFlow</span>
+          <span className="gradient-text font-bold text-2xl tracking-tight">NexCard</span>
           <div className="hidden md:flex items-center gap-8 text-sm text-muted-foreground">
             <a href="#features" className="hover:text-foreground transition-colors">Преимущества</a>
             <a href="#how" className="hover:text-foreground transition-colors">Как работает</a>
