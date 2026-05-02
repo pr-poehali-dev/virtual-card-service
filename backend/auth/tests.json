@@ -1,0 +1,58 @@
+{
+  "tests": [
+    {
+      "name": "Register new user",
+      "method": "POST",
+      "path": "/?action=register",
+      "body": {
+        "email": "test_user_1@example.com",
+        "password": "secret123",
+        "password_confirm": "secret123",
+        "telegram_username": "test_user1"
+      },
+      "expectedStatus": 200,
+      "expectedBody": {"token": "string"},
+      "bodyMatcher": "partial"
+    },
+    {
+      "name": "Register with mismatched passwords",
+      "method": "POST",
+      "path": "/?action=register",
+      "body": {
+        "email": "test_user_2@example.com",
+        "password": "secret123",
+        "password_confirm": "wrongpass",
+        "telegram_username": "test_user2"
+      },
+      "expectedStatus": 400
+    },
+    {
+      "name": "Register with bad telegram",
+      "method": "POST",
+      "path": "/?action=register",
+      "body": {
+        "email": "test_user_3@example.com",
+        "password": "secret123",
+        "password_confirm": "secret123",
+        "telegram_username": "@@"
+      },
+      "expectedStatus": 400
+    },
+    {
+      "name": "Login wrong password",
+      "method": "POST",
+      "path": "/?action=login",
+      "body": {
+        "email": "nonexistent@example.com",
+        "password": "wrong"
+      },
+      "expectedStatus": 401
+    },
+    {
+      "name": "Me without token",
+      "method": "GET",
+      "path": "/?action=me",
+      "expectedStatus": 401
+    }
+  ]
+}

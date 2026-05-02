@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Icon from "@/components/ui/icon";
 
-const Landing = ({ onDashboard }: { onDashboard: () => void }) => {
+const Landing = ({ onAuth }: { onAuth: (mode: "login" | "register") => void }) => {
   const [openFaq, setOpenFaq] = useState<number | null>(null);
 
   const faqs = [
@@ -36,11 +36,11 @@ const Landing = ({ onDashboard }: { onDashboard: () => void }) => {
             <a href="#faq" className="hover:text-foreground transition-colors">FAQ</a>
           </div>
           <div className="flex items-center gap-3">
-            <button onClick={onDashboard} className="text-sm text-muted-foreground hover:text-foreground transition-colors px-3 py-2">
+            <button onClick={() => onAuth("login")} className="text-sm text-muted-foreground hover:text-foreground transition-colors px-3 py-2">
               Войти
             </button>
             <button
-              onClick={onDashboard}
+              onClick={() => onAuth("register")}
               className="bg-emerald-500 hover:bg-emerald-400 text-black font-bold text-sm px-5 py-2.5 rounded-xl transition-all neon-glow"
             >
               Начать
@@ -70,7 +70,7 @@ const Landing = ({ onDashboard }: { onDashboard: () => void }) => {
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
                 <button
-                  onClick={onDashboard}
+                  onClick={() => onAuth("register")}
                   className="bg-emerald-500 hover:bg-emerald-400 text-black font-bold text-lg px-8 py-4 rounded-2xl transition-all neon-glow flex items-center gap-2 justify-center"
                 >
                   <Icon name="CreditCard" size={20} />
@@ -289,7 +289,7 @@ const Landing = ({ onDashboard }: { onDashboard: () => void }) => {
                   ))}
                 </ul>
                 <button
-                  onClick={onDashboard}
+                  onClick={() => onAuth("register")}
                   className={`w-full py-3 rounded-xl font-bold transition-all ${
                     plan.highlight
                       ? "bg-emerald-500 hover:bg-emerald-400 text-black"
@@ -387,7 +387,7 @@ const Landing = ({ onDashboard }: { onDashboard: () => void }) => {
             Присоединяйся к 50 000+ пользователям, которые уже оплачивают зарубежные сервисы без ограничений
           </p>
           <button
-            onClick={onDashboard}
+            onClick={() => onAuth("register")}
             className="bg-emerald-500 hover:bg-emerald-400 text-black font-black text-xl px-12 py-5 rounded-2xl transition-all neon-glow inline-flex items-center gap-3"
           >
             <Icon name="CreditCard" size={24} />
